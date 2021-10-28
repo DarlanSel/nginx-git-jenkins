@@ -30,4 +30,15 @@ pipeline {
       }
     }
   }
+  post {
+    always {
+      emailext (
+        to: 'sdarlanset@gmail.com darlans@alunos.utfpr.edu.br ricardosobjak@utfpr.edu.br',
+        body: '${DEFAULT_CONTENT}',
+        mimeType: 'text/html',
+        subject: '${DEFAULT_SUBJECT}',
+        replyTo: '$DEFAULT_REPLYTO'
+      )
+    }
+  }
 }
