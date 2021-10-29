@@ -4,28 +4,28 @@ pipeline {
     stage("remove old container") {
       steps {
         sh """
-          sudo docker rm my-nginx-cont -f
+          docker rm my-nginx-cont -f
         """
       }
     }
     stage("remove old image") {
       steps {
         sh """
-          sudo docker image rm my-nginx
+          docker image rm my-nginx
         """
       }
     }
     stage("build image") {
       steps {
         sh """
-          sudo docker build -t my-nginx .
+          docker build -t my-nginx .
         """
       }
     }
     stage("run") {
       steps {
         sh """
-          sudo docker run --name my-nginx-cont -p 8082:80 -d my-nginx
+          docker run --name my-nginx-cont -p 8082:80 -d my-nginx
         """
       }
     }
